@@ -11,15 +11,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout>
-      <SEO
-        title={post.frontmatter.title}
-      />
+      <SEO title={post.frontmatter.title} />
       <article>
         <header>
           <h1
             style={{
               // marginTop: rhythm(1),
-              marginBottom: 0,
+              marginBottom: 0
             }}
           >
             {post.frontmatter.title}
@@ -27,7 +25,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <p
             style={{
               // ...scale(-1 / 5),
-              display: `block`,
+              display: `block`
               // marginBottom: rhythm(1),
             }}
           >
@@ -36,9 +34,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         </header>
         <p dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
-          style={{
-            // marginBottom: rhythm(1),
-          }}
+          style={
+            {
+              // marginBottom: rhythm(1),
+            }
+          }
         />
       </article>
       <nav>
@@ -48,7 +48,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             flexWrap: `wrap`,
             justifyContent: `space-between`,
             listStyle: `none`,
-            padding: 0,
+            padding: 0
           }}
         >
           <li>
@@ -90,4 +90,5 @@ export const pageQuery = graphql`
         description
       }
     }
-  }`
+  }
+`

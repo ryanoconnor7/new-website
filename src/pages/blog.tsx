@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Colors from "../constants/Colors"
 import { Row, Column } from "simple-flexbox"
 import Constants from "../constants/Constants"
-import { graphql } from "gatsby"
+import { graphql, withPrefix } from "gatsby"
 import ReactRatio from "react-ratio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -59,7 +59,7 @@ class BlogPostList extends React.Component<Props, State> {
       const title = node.frontmatter?.title || node.fields?.slug
       return (
         <div key={node.fields.slug}>
-          <a class="passive-link" href={"/blog" + node.fields.slug}>
+          <a class="passive-link" href={withPrefix("/blog") + node.fields.slug}>
             <ReactRatio ratio={16 / 9}>
               <img
                 style={{
