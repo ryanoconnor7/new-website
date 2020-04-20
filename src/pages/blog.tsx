@@ -8,7 +8,6 @@ import { graphql } from "gatsby"
 import ReactRatio from "react-ratio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
 interface Props {
   path: string
   url: string
@@ -22,14 +21,16 @@ class BlogPostList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      width: window.innerWidth,
+      width: typeof window !== "undefined" ? window.innerWidth : 500
     }
   }
   componentDidMount() {
     window.addEventListener("resize", () => {
-      this.setState({
-        width: window.innerWidth,
-      })
+      if (window) {
+        this.setState({
+          width: typeof window !== "undefined" ? window.innerWidth : 500
+        })
+      }
     })
   }
 
@@ -39,7 +40,7 @@ class BlogPostList extends React.Component<Props, State> {
       const rp: string = v.relativePath ?? ""
       return rp.includes(slug.replace(/\//g, ""))
     })
-    
+
     return result?.publicURL ?? ""
   }
 
@@ -56,75 +57,74 @@ class BlogPostList extends React.Component<Props, State> {
 
     const Content = ({ node }) => {
       const title = node.frontmatter?.title || node.fields?.slug
-      return (<div key={node.fields.slug}>
-        <a class="passive-link" href={"/blog" + node.fields.slug}>
-          <ReactRatio ratio={16 / 9}>
-            <img
-              style={{
-                height: "100%",
-                width: "100%",
-                alignSelf: "center",
-                objectFit: "cover",
-                borderTopRightRadius: 16,
-                borderTopLeftRadius: 16
-              }}
-              src={this.getBanner(node.fields.slug)}
-            />
-          </ReactRatio>
-          <div style={{padding: 16, paddingBottom: 0}}>
-          <h3 style={{textDecoration: 'none'}}>{title}</h3>
-          <small>{node.frontmatter.date}</small>
-          <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+      return (
+        <div key={node.fields.slug}>
+          <a class="passive-link" href={"/blog" + node.fields.slug}>
+            <ReactRatio ratio={16 / 9}>
+              <img
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  alignSelf: "center",
+                  objectFit: "cover",
+                  borderTopRightRadius: 16,
+                  borderTopLeftRadius: 16
                 }}
+                src={this.getBanner(node.fields.slug)}
               />
-            </section>
+            </ReactRatio>
+            <div style={{ padding: 16, paddingBottom: 0 }}>
+              <h3 style={{ textDecoration: "none" }}>{title}</h3>
+              <small>{node.frontmatter.date}</small>
+              <section>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt
+                  }}
+                />
+              </section>
             </div>
-            </a>
-      </div>
-    )}
+          </a>
+        </div>
+      )
+    }
 
     return (
       <Layout>
         <SEO title="Blog" />
-        
-            <RowWrapper>
-              {posts.map((node, index) =>
-                
-                index % 2 === 0 ? (
-                  <PostWrapper
-                    style={
-                      this.state.width > Constants.resizeThreshold
-                        ? { marginRight: 8 }
-                        : { marginBottom: 8 }
-                    }
-                  >
-                    <Content node={node} />
-                  </PostWrapper>
-                ) : null
-              )}
-              {posts.map((node, index) =>
-                index % 2 === 1 ? (
-                  <PostWrapper
-                    style={
-                      this.state.width > Constants.resizeThreshold
-                        ? { marginLeft: 8 }
-                        : { marginTop: 8 }
-                    }
-                  >
-                    <Content node={node} />
-                  </PostWrapper>
-                ) : null
-              )}
-            </RowWrapper>
-          </Layout>
+
+        <RowWrapper>
+          {posts.map((node, index) =>
+            index % 2 === 0 ? (
+              <PostWrapper
+                style={
+                  this.state.width > Constants.resizeThreshold
+                    ? { marginRight: 8 }
+                    : { marginBottom: 8 }
+                }
+              >
+                <Content node={node} />
+              </PostWrapper>
+            ) : null
+          )}
+          {posts.map((node, index) =>
+            index % 2 === 1 ? (
+              <PostWrapper
+                style={
+                  this.state.width > Constants.resizeThreshold
+                    ? { marginLeft: 8 }
+                    : { marginTop: 8 }
+                }
+              >
+                <Content node={node} />
+              </PostWrapper>
+            ) : null
+          )}
+        </RowWrapper>
+      </Layout>
     )
   }
 }
-
-
 
 export default BlogPostList
 
@@ -143,16 +143,16 @@ export const pageQuery = graphql`
         }
       }
     }
-    allFile(filter: {name: {eq: "banner"}}) {
-      nodes{
-        publicURL,
+    allFile(filter: { name: { eq: "banner" } }) {
+      nodes {
+        publicURL
         relativePath
       }
-      
     }
-  }`
+  }
+`
 
-  const PostWrapper = styled.div`
+const PostWrapper = styled.div`
   background-color: ${Colors.offWhiteBlue};
   border-radius: 16px;
   flex-grow: 1;

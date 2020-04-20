@@ -21,9 +21,6 @@ import {
   faAppStore,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons"
-import { BrowserRouter } from "react-router-dom"
-import { Route, Switch } from "react-router"
-import BlogPostList from "../pages/blog"
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -37,11 +34,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <BrowserRouter>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <Switch>
-          <Route path={`/test`} component={BlogPostList}></Route>
-        </Switch>
         <div
           style={{
             margin: `0 auto`,
@@ -83,7 +76,6 @@ const Layout = ({ children }) => {
             icon={faYoutube}
           />
         </Row>
-      </BrowserRouter>
     </>
   )
 }
