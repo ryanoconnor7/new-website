@@ -59,7 +59,7 @@ class BlogPostList extends React.Component<Props, State> {
       const title = node.frontmatter?.title || node.fields?.slug
       return (
         <div key={node.fields.slug}>
-          <a class="passive-link" href={withPrefix("/blog") + node.fields.slug}>
+          <a class="passive-link" href={"/blog" + node.fields.slug}>
             <ReactRatio ratio={16 / 9}>
               <img
                 style={{
