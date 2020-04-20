@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Ryan O'Connor`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Ryan O'Connor`,
+      summary: `New York`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `Developer - Designer - Media`,
+    siteUrl: `https://ryanoconnor.dev`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `ryan7oconnor`,
     },
   },
   plugins: [
@@ -45,18 +45,24 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          `@pauliescanlon/gatsby-remark-sticky-table`,
+          {resolve: "gatsby-remark-custom-blocks",
+          options: {
+            blocks: {
+              danger: {
+                classes: "danger",
+              },
+              img25: {
+                classes: "img25",
+                title: "optional"
+              },
+            },
+          },}
         ],
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -69,13 +75,17 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: `gatsby-plugin-typescript`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        isTSX: true, // defaults to false
+        allExtensions: true, // defaults to false
       },
     },
+    `gatsby-plugin-react-helmet`,
+      'gatsby-plugin-debug-build',
+    
+    
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

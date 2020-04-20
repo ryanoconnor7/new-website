@@ -1,70 +1,95 @@
+/**
+ * Layout component that queries for data
+ * with Gatsby's useStaticQuery component
+ *
+ * See: https://www.gatsbyjs.org/docs/use-static-query/
+ */
+
 import React from "react"
-import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import { useStaticQuery, graphql } from "gatsby"
 
-import { rhythm, scale } from "../utils/typography"
+import Header from "./header"
+import "./layout.css"
+import { FooterButton } from "./headerButton"
+import { Row } from "simple-flexbox"
+import {
+  faTwitter,
+  faInstagram,
+  faGithub,
+  faYoutube,
+  faAppStore,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons"
+import { BrowserRouter } from "react-router-dom"
+import { Route, Switch } from "react-router"
+import BlogPostList from "../pages/blog"
+const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  let header
-
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
+    <>
+      <BrowserRouter>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <Switch>
+          <Route path={`/test`} component={BlogPostList}></Route>
+        </Switch>
+        <div
+          style={{
+            margin: `0 auto`,
+            maxWidth: 960,
+            padding: `0 1.0875rem 1.45rem`,
+          }}
+        >
+          <main>{children}</main>
+        </div>
+        <Row vertical="center" style={{ justifyContent: "center", margin: 16 }}>
+          <FooterButton
+            buttonName={""}
+            url={"https://github.com/ryanoconnor7"}
+            icon={faGithub}
+          />
+          <FooterButton
+            buttonName={""}
+            url={"https://apps.apple.com/us/developer/ryan-oconnor/id989567551"}
+            icon={faAppStore}
+          />
+          <FooterButton
+            buttonName={""}
+            url={"https://www.linkedin.com/in/ryan-o-connor-2b386594/"}
+            icon={faLinkedin}
+          />
+          <FooterButton
+            buttonName={""}
+            url={"https://twitter.com/ryan7oconnor"}
+            icon={faTwitter}
+          />
+          <FooterButton
+            buttonName={""}
+            url={"https://www.instagram.com/ryan.oconnor7/"}
+            icon={faInstagram}
+          />
+          <FooterButton
+            buttonName={""}
+            url={"https://www.youtube.com/channel/UC94TXPkHmjAKHaCUqdZK8Lg"}
+            icon={faYoutube}
+          />
+        </Row>
+      </BrowserRouter>
+    </>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout
