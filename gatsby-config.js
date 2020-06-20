@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/new-website",
   siteMetadata: {
     title: `Ryan O'Connor`,
     author: {
@@ -68,13 +69,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Ryan O'Connor`,
+        short_name: `Ryan O'Connor`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`
+        icon: `src/images/SiteLogo.png`
       }
     },
     {

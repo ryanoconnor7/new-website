@@ -4,6 +4,8 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import { rhythm, scale } from "../TypographyUtils"
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
@@ -16,7 +18,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <h1
             style={{
-              // marginTop: rhythm(1),
+              marginTop: rhythm(1),
               marginBottom: 0
             }}
           >
@@ -24,21 +26,20 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </h1>
           <p
             style={{
-              // ...scale(-1 / 5),
-              display: `block`
-              // marginBottom: rhythm(1),
+              display: `block`,
+              marginBottom: rhythm(1)
             }}
           >
             {post.frontmatter.date}
           </p>
         </header>
-        <p dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div
+          dangerouslySetInnerHTML={{ __html: `<div> ${post.html} </div>` }}
+        />
         <hr
-          style={
-            {
-              // marginBottom: rhythm(1),
-            }
-          }
+          style={{
+            marginBottom: rhythm(1)
+          }}
         />
       </article>
       <nav>

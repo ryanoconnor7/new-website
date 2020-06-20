@@ -8,6 +8,8 @@ import { graphql, withPrefix } from "gatsby"
 import ReactRatio from "react-ratio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { window as gw, document } from "browser-monads"
+
 interface Props {
   path: string
   url: string
@@ -21,16 +23,22 @@ class BlogPostList extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      width: typeof window !== "undefined" ? window.innerWidth : 500
+      width: gw.innerWidth
     }
   }
+  componentWillMount() {
+    this.setState({
+      width: gw.innerWidth
+    })
+  }
   componentDidMount() {
-    window.addEventListener("resize", () => {
-      if (window) {
-        this.setState({
-          width: typeof window !== "undefined" ? window.innerWidth : 500
-        })
-      }
+    this.setState({
+      width: gw.innerWidth
+    })
+    gw.addEventListener("resize", () => {
+      this.setState({
+        width: gw.innerWidth
+      })
     })
   }
 
