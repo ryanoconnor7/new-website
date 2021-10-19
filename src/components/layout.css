@@ -674,7 +674,7 @@ pre tt:after {
   color: gray;
   font-weight: 700;
   margin-top: -24px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .about-header {
@@ -691,7 +691,7 @@ pre tt:after {
 }
 
 .about-img-wrapper {
-  width: 76px;
+  width: 60px;
 }
 
 .about-list-wrapper {

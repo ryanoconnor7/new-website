@@ -9,6 +9,7 @@ import ReactRatio from "react-ratio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { window as gw, document } from "browser-monads"
+import moment from "moment"
 
 interface Props {
   path: string
@@ -53,13 +54,20 @@ class BlogPostList extends React.Component<Props, State> {
   }
 
   render() {
-    const posts: any[] = this.props.data.allMarkdownRemark.nodes ?? []
+    let posts: any[] = this.props.data.allMarkdownRemark.nodes ?? []
 
+    let pairs = []
+    posts.forEach((p, i, all) => {
+      if (i % 2 === 0) {
+        pairs.push([all[i], all[i + 1]])
+      }
+    })
+    console.log(pairs)
     const RowWrapper = ({ children }) => {
       if (this.state.width < Constants.resizeThreshold) {
-        return <Column>{children}</Column>
+        return <Column style={{ marginBottom: 16 }}>{children}</Column>
       } else {
-        return <Row>{children}</Row>
+        return <Row style={{ marginBottom: 16 }}>{children}</Row>
       }
     }
 
@@ -67,16 +75,16 @@ class BlogPostList extends React.Component<Props, State> {
       const title = node.frontmatter?.title || node.fields?.slug
       return (
         <div key={node.fields.slug}>
-          <a class="passive-link" href={"/blog" + node.fields.slug}>
+          <a className="passive-link" href={"/blog" + node.fields.slug}>
             <ReactRatio ratio={16 / 9}>
               <img
                 style={{
                   height: "100%",
-                  width: "100%",
                   alignSelf: "center",
                   objectFit: "cover",
                   borderTopRightRadius: 16,
-                  borderTopLeftRadius: 16
+                  borderTopLeftRadius: 16,
+                  width: "100%"
                 }}
                 src={this.getBanner(node.fields.slug)}
               />
@@ -100,35 +108,36 @@ class BlogPostList extends React.Component<Props, State> {
     return (
       <Layout>
         <SEO title="Blog" />
-
-        <RowWrapper>
-          {posts.map((node, index) =>
-            index % 2 === 0 ? (
-              <PostWrapper
-                style={
-                  this.state.width > Constants.resizeThreshold
-                    ? { marginRight: 8 }
-                    : { marginBottom: 8 }
-                }
-              >
-                <Content node={node} />
-              </PostWrapper>
-            ) : null
-          )}
-          {posts.map((node, index) =>
-            index % 2 === 1 ? (
-              <PostWrapper
-                style={
-                  this.state.width > Constants.resizeThreshold
-                    ? { marginLeft: 8 }
-                    : { marginTop: 8 }
-                }
-              >
-                <Content node={node} />
-              </PostWrapper>
-            ) : null
-          )}
-        </RowWrapper>
+        {pairs.map(pair => {
+          return (
+            <RowWrapper>
+              {[
+                pair[0] ? (
+                  <PostWrapper
+                    style={
+                      this.state.width > Constants.resizeThreshold
+                        ? { marginRight: 8 }
+                        : { marginBottom: 8 }
+                    }
+                  >
+                    <Content node={pair[0]} />
+                  </PostWrapper>
+                ) : null,
+                pair[1] ? (
+                  <PostWrapper
+                    style={
+                      this.state.width > Constants.resizeThreshold
+                        ? { marginLeft: 8 }
+                        : { marginTop: 8 }
+                    }
+                  >
+                    <Content node={pair[1]} />
+                  </PostWrapper>
+                ) : null
+              ]}
+            </RowWrapper>
+          )
+        })}
       </Layout>
     )
   }

@@ -4,7 +4,7 @@ date: "2020-06-19T22:12:03.284Z"
 # description: "who knows what this even is????"
 ---
 
-![screenshots](./Screenshots.png)
+![screenshots](./banner.png)
 
 After being inspired by a new train-tracking website at [mylirr.org](www.mylirr.org), I joined the MTA LIRR in May 2019 to build a new mobile app for commuters. That summer we began development on a React Native movile app. Initially under the name myLIRR, the app had real-time location, train status, and service alerts at its core. Yet, during our development we realized the importance of capturing the 70,000 users a day on the existing TrainTime app.
 

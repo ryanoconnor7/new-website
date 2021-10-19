@@ -9,7 +9,7 @@ const IndexPage = () => (
       <div style={{ flexGrow: 1 }} />
       <img
         className="about-img"
-        src={require("../images/Me.jpg")}
+        src={require("../images/Me.png")}
         height={126}
         style={{ marginRight: 12, borderRadius: 63 }}
       />
@@ -36,28 +36,30 @@ const IndexPage = () => (
       </Row>
       <div>
         <h3>Apple - Software Engineer Intern</h3>
-        <p className="about-date">June 2020 - Present</p>
+        <p className="about-date">June 2020 - November 2020</p>
       </div>
     </Row>
-    <div className="about-list-wrapper">
+    <ul className="about-list-wrapper">
       <li>Proactive Intelligence Team - Siri Shortcuts</li>
-    </div>
+    </ul>
     <Row className="about-row">
       <Row className="about-img-wrapper">
-        <div style={{ flexGrow: 1 }} />
+        <div style={{ marginTop: -2 }} />
         <img
           className="about-img"
           src={require("../images/MTALogo.png")}
-          height={48}
+          height={50}
           style={{ marginRight: 8 }}
         />
       </Row>
       <div>
         <h3>MTA Long Island Rail Road - App Developer</h3>
-        <p className="about-date">May 2019 - May 2020</p>
+        <p className="about-date">
+          May 2019 - May 2020, December 2020 - Present
+        </p>
       </div>
     </Row>
-    <div className="about-list-wrapper">
+    <ul className="about-list-wrapper">
       <li>
         Designed and developed major update to{" "}
         <a target="_blank" href="https://app.mylirr.org">
@@ -70,7 +72,7 @@ const IndexPage = () => (
       <li>
         Read more <a href="/blog/lirr-traintime">here</a>.
       </li>
-    </div>
+    </ul>
     <Row className="about-row">
       <Row className="about-img-wrapper">
         <div style={{ flexGrow: 1 }} />
@@ -86,7 +88,7 @@ const IndexPage = () => (
         <p className="about-date">Released September 2017</p>
       </div>
     </Row>
-    <div className="about-list-wrapper">
+    <ul className="about-list-wrapper">
       <li>
         Developed{" "}
         <a
@@ -98,10 +100,53 @@ const IndexPage = () => (
         iOS app for daily news and events as well as virtual tour and brochure
         of school. Read more <a href="/blog/chaminade-app">here</a>.
       </li>
-    </div>
+    </ul>
+
     <Row className="about-row">
       <Row className="about-img-wrapper">
-        <div style={{ flexGrow: 1 }} />
+        <div style={{ flexGrow: 1, marginTop: -2 }} />
+        <img
+          className="about-img"
+          src={require("../images/AppleLogo.png")}
+          height={54}
+          style={{ marginRight: 6 }}
+        />
+      </Row>
+      <div>
+        <h3>WWDC Scholarship Winner</h3>
+        <p className="about-date">2017 & 2019</p>
+      </div>
+    </Row>
+    <ul className="about-list-wrapper">
+      <li>
+        June 2017 - Built a project in SpriteKit on the four seasons,
+        interactive using the devices gyroscope.{" "}
+        <iframe
+          width={280}
+          height={158}
+          src="https://www.youtube.com/embed/vu6X3VcbNa4"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style={{ borderRadius: 12 }}
+        ></iframe>
+      </li>
+      <li>
+        June 2019 - Built a self-driving car simulation of an intersection with
+        no stop lights.{" "}
+        <iframe
+          width={280}
+          height={158}
+          src="https://www.youtube.com/embed/jUrjRzJdDKw"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style={{ borderRadius: 12 }}
+        ></iframe>
+      </li>
+    </ul>
+    <Row className="about-row">
+      <Row className="about-img-wrapper">
         <img
           className="about-img"
           src={require("../images/SiteLogo.png")}
@@ -114,7 +159,7 @@ const IndexPage = () => (
         <p className="about-date">2015 - Present</p>
       </div>
     </Row>
-    <div className="about-list-wrapper">
+    <ul className="about-list-wrapper">
       <li>
         Date & Time (iOS) - Simple digital/analog clock today view widget -{" "}
         <a
@@ -145,50 +190,7 @@ const IndexPage = () => (
           App Store
         </a>
       </li>
-    </div>
-    <Row className="about-row">
-      <Row className="about-img-wrapper">
-        <div style={{ flexGrow: 1, marginTop: -2 }} />
-        <img
-          className="about-img"
-          src={require("../images/AppleLogo.png")}
-          height={54}
-          style={{ marginRight: 6 }}
-        />
-      </Row>
-      <div>
-        <h3>WWDC Scholarship Winner</h3>
-        <p className="about-date">2017 & 2019</p>
-      </div>
-    </Row>
-    <div className="about-list-wrapper">
-      <li>
-        June 2017 - Built a project in SpriteKit on the four seasons,
-        interactive using the devices gyroscope.{" "}
-        <iframe
-          width={280}
-          height={158}
-          src="https://www.youtube.com/embed/vu6X3VcbNa4"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style={{ borderRadius: 12, marginLeft: 24 }}
-        ></iframe>
-      </li>
-      <li>
-        June 2019 - Built a self-driving car simulation of an intersection with
-        no stop lights.{" "}
-        <iframe
-          width={280}
-          height={158}
-          src="https://www.youtube.com/embed/jUrjRzJdDKw"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style={{ borderRadius: 12, marginLeft: 24 }}
-        ></iframe>
-      </li>
-    </div>
+    </ul>
     <h2 style={{ marginTop: 24 }}>Education🎓</h2>
     <Row className="about-row">
       <Row className="about-img-wrapper">
@@ -205,10 +207,10 @@ const IndexPage = () => (
         <p className="about-date">September 2019 - Present</p>
       </div>
     </Row>
-    <div className="about-list-wrapper">
+    <ul className="about-list-wrapper">
       <li>Computer Science - LSA</li>
       <li>Club Sailing Team - Go Blue!</li>
-    </div>
+    </ul>
     <Row className="about-row">
       <Row className="about-img-wrapper">
         <div style={{ flexGrow: 1 }} />
@@ -220,7 +222,7 @@ const IndexPage = () => (
         />
       </Row>
       <div>
-        <h3>Chaminade High School Graduate</h3>
+        <h3>Chaminade High School</h3>
         <p className="about-date">Class of 2019</p>
       </div>
     </Row>
