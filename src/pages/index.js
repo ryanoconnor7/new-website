@@ -18,8 +18,8 @@ const IndexPage = () => (
         <p style={{ marginTop: -24 }}>
           I'm Ryan O'Connor, an app developer and designer from Long Island, NY.
           I'm currently a student at the University of Michigan. I've published
-          personal apps on the app store and also worked on projects for MTA
-          Long Island Rail Road, Apple, and Chaminade High School.
+          personal apps on the app store and also worked on projects for the NY
+          MTA, Apple, and Chaminade High School.
         </p>
       </div>
     </Row>
@@ -53,7 +53,7 @@ const IndexPage = () => (
         />
       </Row>
       <div>
-        <h3>MTA Long Island Rail Road - App Developer</h3>
+        <h3>Metropolitan Transportation Authority - App Developer</h3>
         <p className="about-date">
           May 2019 - May 2020, December 2020 - Present
         </p>
