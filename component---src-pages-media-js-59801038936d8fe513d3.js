@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{JLbc:function(e,n,t){"use strict";t.r(n);var a=t("q1tI"),l=t.n(a),c=t("Bl7J"),r=t("vrFN");n.default=function(){return l.a.createElement(c.a,null,l.a.createElement(r.a,{title:"Media"}),l.a.createElement("h1",null,"Media"),l.a.createElement("p",null,"🚧 Coming zoon! 🚧"))}}}]);
-//# sourceMappingURL=component---src-pages-media-js-59801038936d8fe513d3.js.map
