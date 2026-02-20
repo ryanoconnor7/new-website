@@ -154,11 +154,11 @@ export default function App() {
             </svg>
           </a>
           <a
-            className="icon-link"
+            className="icon-link with-text"
             href="https://www.linkedin.com/in/rmoc/"
             target="_blank"
             rel="noreferrer"
-            aria-label="LinkedIn"
+            aria-label="Ryan O'Connor on LinkedIn"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -166,6 +166,7 @@ export default function App() {
                 fill="currentColor"
               />
             </svg>
+            <span>Ryan O&apos;Connor</span>
           </a>
         </footer>
       </main>

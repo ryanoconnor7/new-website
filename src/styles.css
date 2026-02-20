@@ -238,6 +238,16 @@ a.experience-card {
   height: 17px;
 }
 
+.icon-link.with-text {
+  width: auto;
+  padding: 0 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
 .ambient {
   position: fixed;
   inset: 0;
